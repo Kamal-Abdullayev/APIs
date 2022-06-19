@@ -1,4 +1,5 @@
-﻿namespace ProjectX.Dto
+﻿
+namespace ProjectX.Dto
 {
     public class ReturnProduct
     {
@@ -7,6 +8,7 @@
         public double Price { get; set; }
         public bool IsActive { get; set; }
         public string CategoryName { get; set; }
-        public string Image { get; set; }
+        public string FullImagePath { get; set; }
     }
+
 }

@@ -69,3 +69,6 @@ C:\Users\99450\Desktop\ProjectX\ProjectX\obj\Debug\netcoreapp3.1\ProjectX.genrun
 C:\Users\99450\Desktop\ProjectX\ProjectX\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Users\99450\Desktop\ProjectX\ProjectX\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 C:\Users\99450\Desktop\ProjectX\ProjectX\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\99450\Desktop\ProjectX\ProjectX\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\99450\Desktop\ProjectX\ProjectX\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\99450\Desktop\ProjectX\ProjectX\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll

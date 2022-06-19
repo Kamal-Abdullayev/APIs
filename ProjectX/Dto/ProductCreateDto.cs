@@ -15,12 +15,14 @@ namespace ProjectX.Dto
         public virtual IFormFile ImageUrl { get; set; }
     }
 
-    public class ProductCreateDtoValidator:AbstractValidator<ProductCreateDto>
+    public class ProductCreateDtoValidator : AbstractValidator<ProductCreateDto>
     {
         public ProductCreateDtoValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().MaximumLength(50).WithMessage(ErrorMessage.ProductCreateDtoNameMaxLength);
+            RuleFor(p => p.Name).MaximumLength(100).WithMessage(ErrorMessage.ProductCreateDtoNameMaxLength);
+            RuleFor(p => p.Price).GreaterThan(0).WithMessage(ErrorMessage.PriceMoreThanZero);
+            RuleFor(p => p.IsActive).NotNull();
+            RuleFor(p => p.CategoryId).NotNull().WithMessage(ErrorMessage.NotNull("Catefory Id"));
         }
     }
-
 }

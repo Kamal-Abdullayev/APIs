@@ -2,6 +2,7 @@
 using ProjectX.Data.Entities;
 using ProjectX.Dto;
 using ProjectX.Entities.DAL;
+using ProjectX.Extension;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,7 +40,7 @@ namespace ProjectX.Controllers
         {
             if (category == null) return NotFound();
             bool isExistCategory = _context.Categories.Any(p => p.Name == category.Name);
-            if (isExistCategory) return BadRequest("This Category alredy exist!");
+            if (isExistCategory) return BadRequest(ErrorMessage.CategoryAlredyExist);
             Category newCategory = new Category();
 
             newCategory.Name = category.Name;
@@ -65,7 +66,7 @@ namespace ProjectX.Controllers
             {
                 if (categoryForName.Name != categoryWithId.Name)
                 {
-                    return BadRequest("This Category alredy exist!");
+                    return BadRequest(ErrorMessage.CategoryAlredyExist);
                 }
             }
 

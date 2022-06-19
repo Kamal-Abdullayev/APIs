@@ -4,9 +4,8 @@ using ProjectX.Data.Entities;
 
 namespace ProjectX.Entities.Models
 {
-    public class Product
+    public class Product:BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
         public bool IsActive { get; set; }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProjectX.Dto;
 using ProjectX.Entities.DAL;
+using ProjectX.Profiles;
 
 namespace ProjectX
 {
@@ -33,7 +34,6 @@ namespace ProjectX
             {
                 option.UseSqlServer(connectionString);
             });
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -43,8 +43,11 @@ namespace ProjectX
                     Description = "ASP.Net Core Web Api Example"
                 });
             });
-
-            services.AddFluentValidation(option => option.RegisterValidatorsFromAssemblyContaining<ProductCreateDtoValidator>());
+            services.AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductCreateDtoValidator>());
+            services.AddAutoMapper(option =>
+            {
+                option.AddProfile<MapperProfile>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

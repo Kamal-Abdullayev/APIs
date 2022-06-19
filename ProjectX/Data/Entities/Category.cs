@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace ProjectX.Data.Entities
 {
-    public class Category
+    public class Category:BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public List<Product> Products { get; set; }
