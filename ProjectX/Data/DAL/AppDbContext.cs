@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProjectX.Data.Configuration;
 using ProjectX.Data.Entities;
@@ -6,7 +7,7 @@ using ProjectX.Entities.Models;
 
 namespace ProjectX.Entities.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {

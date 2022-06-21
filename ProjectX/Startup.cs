@@ -1,14 +1,17 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ProjectX.Data.Entities;
 using ProjectX.Dto;
 using ProjectX.Entities.DAL;
 using ProjectX.Profiles;
+using System;
 
 namespace ProjectX
 {
@@ -48,6 +51,18 @@ namespace ProjectX
             {
                 option.AddProfile<MapperProfile>();
             });
+            services.AddIdentity<AppUser, IdentityRole>(option =>
+            {
+                option.Password.RequiredLength = 8;
+                option.Password.RequireNonAlphanumeric = true;
+                option.Password.RequireDigit = true;
+                option.Password.RequireUppercase = true;
+                option.Password.RequireLowercase = true;
+
+                option.Lockout.AllowedForNewUsers = true;
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                option.Lockout.MaxFailedAccessAttempts = 5;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +86,7 @@ namespace ProjectX
 
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
